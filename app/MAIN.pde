@@ -1,26 +1,18 @@
 void mainMode() {
-  background(white); 
-  fill(lightCyan);
-  noStroke();
-  rect(width-200, 0, 200, height);
  
   /*
   saveButton.render();
   clearButton.render();
   randomButton.render();
   */
-  //renter the buttons
-  inputB.render();
-  outputB.render();
-  graphB.render();
-  subjectB.render();
-  
+  toolBar();
 }
 
 void mainClick() {
   if (inputB.isHover()) mode = Mode.INPUT;
-  if (outputB.isHover()); mode = Mode.OUTPUT;
-  if (graphB.isHover()); mode = Mode.GRAPH;
+  else if (outputB.isHover()) mode = Mode.OUTPUT;
+  else if (graphB.isHover()) mode = Mode.GRAPH;
+  else if (subjectB.isHover()) mode = Mode.NEW;
   
   /*
   if (saveButton.isHover()) saveData();

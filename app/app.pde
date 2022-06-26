@@ -1,8 +1,8 @@
 import java.util.Map;
 
+//========================================
 final color black = #000000;
 final color white = #FFFFFF;
-
 color red        = #FF0000;
 color pink       = #FF6ABC;
 color lightBlue  = #00FCEE;
@@ -10,18 +10,19 @@ color brown      = #9F642C;
 color blue       = #324BE3;
 color gray       = #818183;
 color lightGreen = #00FF00;
-color medGreen   = #006C27;
+color cyan       = #94BBC1;
 color yellow     = #F6FF05;
 color orange     = #FF7E05;
 color lightCyan  = #E8F9FC;  
 color lightGray  = #BDCBCE;
-
-color bronze     = #DE7300;
 color silver     = #D1D1D1;
 color gold       = #E5C982;
+//images/fonts ===========================
+PImage hidden, plus;
+PFont font;
 
 // Mode framework ========================
-enum Mode { MAIN, INPUT, OUTPUT, GRAPH};
+enum Mode { MAIN, INPUT, OUTPUT, GRAPH, NEW};
 Mode mode;
 
 // Maps chosen subject to test data
@@ -35,7 +36,13 @@ Button saveButton, clearButton, randomButton; //not used at the moment
 void setup() {
   size(900,600);
   textAlign(CORNER, CENTER);
+  //load images / font   ==================
+  hidden = loadImage("images/hidden.png");
+  plus = loadImage("images/plus.png");
+  font = createFont("images/font.png",200);
+  textFont(font);
   
+  //=======================================
   loadData();
   
   // add arbitrary values (for testing purposes)
@@ -70,6 +77,7 @@ void draw() {
   case INPUT: inputMode(); break;
   case OUTPUT: outputMode(); break;
   case GRAPH: graphMode(); break;
+  case NEW: newMode(); break; //this is the draw function of Mode.NEW, don't think otherwise
   }
 }
 
@@ -78,9 +86,35 @@ void mouseClicked() {
   else if (mode == Mode.INPUT) inputClick(); 
   else if (mode == Mode.OUTPUT) outputClick(); 
   else if (mode == Mode.GRAPH) graphClick(); 
+  else if (mode == Mode.NEW) newClick(); 
 }
 
 //========================================================================
+
+void toolBar() {
+  
+  if (mode == Mode.OUTPUT || mode == Mode.INPUT || mode == Mode.GRAPH || mode == Mode.NEW) {
+    fill(lightCyan);
+    noStroke();
+    rect(width-20, 0, 20, height);
+        
+    fill(cyan);
+    rect(width-20,height/2-10,20,20,5);
+    image(hidden, width-20, height/2-10, 20, 20);
+  }
+  else { //Mode.MAIN
+    //render the tool bar ============
+    fill(lightCyan);
+    noStroke();
+    rect(width-200, 0, 200, height);
+    
+    //renter the buttons
+    inputB.render();
+    outputB.render();
+    graphB.render();
+    subjectB.render();
+  }
+}
 
 void initalizeButtons() {
   //used for initalizing the buttons, the rendering occurs in their respective modes
@@ -91,16 +125,18 @@ void initalizeButtons() {
   clearButton = new Button("Clear", 350, 200, 100,50);
   randomButton = new Button("Random", 500, 200, 100,50);
   */
-  inputB = new Button("Input new test information", width-210,30,200,50,lightGray,white,18);
-  outputB = new Button("Set a Target", width-210,90,200,50,lightGray,white,18);
-  graphB = new Button("To see graphs", width-210,150,200,50,lightGray,white,18);
-  subjectB = new Button("New Subject", width-100, height-50, 90, 30, lightCyan, blue, 14);
+  inputB = new Button("Input new test information", width-210,30,200,50,lightGray,white,18,plus);
+  outputB = new Button("Set a Target", width-210,90,200,50,lightGray,white,18, plus);
+  graphB = new Button("To see graphs", width-210,150,200,50,lightGray,white,18, plus);
+  subjectB = new Button("New Subject", width-120, height-50, 115, 30, lightCyan, blue, 14, plus);
   
   //mode - INPUT
   
   //mode - OUTPUT
   
   //mode - GRAPH
+  
+  //mode - NEW
   
 }
 
