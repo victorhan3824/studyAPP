@@ -13,7 +13,7 @@ class Button {
   
   void render() {
     fill(this.isHover() ? BLACK : WHITE);
-    rect(this.x, this.y, this.w, this.h);
+    rect(this.x, this.y, this.w, this.h, 5);
     
     fill(this.isHover() ? WHITE : BLACK);
     text(name, this.x, this.y, this.w, this.h);

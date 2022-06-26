@@ -3,8 +3,25 @@ import java.util.Map;
 final color BLACK = #000000;
 final color WHITE = #FFFFFF;
 
-// Mode framework
-enum Mode { MAIN, INPUT, OUTPUT, GRAPH };
+color red        = #FF0000;
+color pink       = #FF6ABC;
+color lightBlue  = #00FCEE;
+color brown      = #9F642C;
+color blue       = #324BE3;
+color gray       = #818183;
+color lightGreen = #00FF00;
+color medGreen   = #006C27;
+color yellow     = #F6FF05;
+color orange     = #FF7E05;
+color lightCyan  = #D7F9FF;  
+color lightGray  = #939393;
+
+color bronze     = #DE7300;
+color silver     = #D1D1D1;
+color gold       = #E5C982;
+
+// Mode framework ========================
+enum Mode { MAIN, INPUT, OUTPUT, GRAPH};
 Mode mode;
 
 // Maps chosen subject to test data
@@ -13,7 +30,7 @@ HashMap<String, ArrayList<Test>> data;
 Button saveButton, clearButton, randomButton;
 
 void setup() {
-  fullScreen();
+  size(900,600);
   
   loadData();
   
