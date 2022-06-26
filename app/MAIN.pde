@@ -1,17 +1,28 @@
 void mainMode() {
-  background(lightCyan); 
+  background(white); 
+  fill(lightCyan);
+  noStroke();
+  rect(width-200, 0, 200, height);
  
   /*
-  // render the buttons
   saveButton.render();
   clearButton.render();
   randomButton.render();
   */
+  //renter the buttons
+  inputB.render();
+  outputB.render();
+  graphB.render();
+  subjectB.render();
   
 }
 
 void mainClick() {
+  if (inputB.isHover()) mode = Mode.INPUT;
+  if (outputB.isHover()); mode = Mode.OUTPUT;
+  if (graphB.isHover()); mode = Mode.GRAPH;
   
+  /*
   if (saveButton.isHover()) saveData();
   
   if (clearButton.isHover()) {
@@ -31,4 +42,5 @@ void mainClick() {
       data.put("English", new ArrayList<Test>());
     data.get("English").add(new Test(studyTime, mark));
   }
+  */
 }

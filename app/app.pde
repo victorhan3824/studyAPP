@@ -1,7 +1,7 @@
 import java.util.Map;
 
-final color BLACK = #000000;
-final color WHITE = #FFFFFF;
+final color black = #000000;
+final color white = #FFFFFF;
 
 color red        = #FF0000;
 color pink       = #FF6ABC;
@@ -13,8 +13,8 @@ color lightGreen = #00FF00;
 color medGreen   = #006C27;
 color yellow     = #F6FF05;
 color orange     = #FF7E05;
-color lightCyan  = #D7F9FF;  
-color lightGray  = #939393;
+color lightCyan  = #E8F9FC;  
+color lightGray  = #BDCBCE;
 
 color bronze     = #DE7300;
 color silver     = #D1D1D1;
@@ -27,10 +27,14 @@ Mode mode;
 // Maps chosen subject to test data
 HashMap<String, ArrayList<Test>> data;
 
-Button saveButton, clearButton, randomButton;
+
+//all the buttons :(
+Button inputB, outputB, graphB, subjectB; //mode - MAIN
+Button saveButton, clearButton, randomButton; //not used at the moment
 
 void setup() {
   size(900,600);
+  textAlign(CORNER, CENTER);
   
   loadData();
   
@@ -60,7 +64,6 @@ void setup() {
 
 void draw() {
   background(255);
-  textSize(30);
   
   switch (mode) {
   case MAIN: mainMode(); break;
@@ -82,9 +85,17 @@ void mouseClicked() {
 void initalizeButtons() {
   //used for initalizing the buttons, the rendering occurs in their respective modes
   //mode - MAIN
+  
+  /*
   saveButton = new Button("Save", 200, 200, 100,50);
   clearButton = new Button("Clear", 350, 200, 100,50);
-  randomButton = new Button("Random", 500, 200, 100,50);  
+  randomButton = new Button("Random", 500, 200, 100,50);
+  */
+  inputB = new Button("Input new test information", width-210,30,200,50,lightGray,white,18);
+  outputB = new Button("Set a Target", width-210,90,200,50,lightGray,white,18);
+  graphB = new Button("To see graphs", width-210,150,200,50,lightGray,white,18);
+  subjectB = new Button("New Subject", width-100, height-50, 90, 30, lightCyan, blue, 14);
+  
   //mode - INPUT
   
   //mode - OUTPUT
